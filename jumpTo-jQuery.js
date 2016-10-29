@@ -3,20 +3,29 @@
 
 	$.fn.jumpTo = function( options ) {
 
+		// Should we animate this jump or not
 		var animate = true;
 
-	    if (options != undefined){
-	      animate = ( typeof(options["animate"]) == "boolean" ) ? options["animate"] : true;
-	    }
+		// What container should we scroll to get to this element
+		var container = 'html,body';
 
-	    if (animate) {
-	    	console.log("Scroll To");
-			$('html,body').animate({
-				scrollTop: $(this).offset()["top"]
+
+
+		if (options != undefined){
+			// console.log("Options Given:");
+			// console.log(options);
+			animate = ( typeof(options["animate"]) == "boolean" ) ? options["animate"] : true;
+			if ( $(options["container"]).length > 0 ) { container = options["container"]}
+		}
+
+		if (animate) {
+			// console.log("Scroll To "+container+"["+$(container).scrollTop()+"|"+$(this).offset()["top"]+"]");
+			$(container).animate({
+				scrollTop: ( $(container).scrollTop() + $(this).offset()["top"] )
 			});
 		}else{
-			console.log("Jump To");
-			$('html,body').scrollTop($(this).offset()["top"]);
+			// console.log("Jump To");
+			$(container).scrollTop($(this).offset()["top"]);
 		}
 	}
 
