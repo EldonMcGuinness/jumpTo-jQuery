@@ -21,7 +21,7 @@
 		if (animate) {
 			// console.log("Scroll To "+container+"["+$(container).scrollTop()+"|"+$(this).offset()["top"]+"]");
 			$(container).animate({
-				scrollTop: ( $(container).scrollTop() + $(this).offset()["top"] )
+				scrollTop: $(this).offset()["top"]
 			});
 		}else{
 			// console.log("Jump To");
