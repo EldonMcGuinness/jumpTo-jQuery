@@ -27,6 +27,8 @@
 			// console.log("Jump To");
 			$(container).scrollTop($(this).offset()["top"]);
 		}
+		
+		return false;
 	}
 
 })(jQuery);
